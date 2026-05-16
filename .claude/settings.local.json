@@ -64,7 +64,18 @@
       "Bash(xargs sed -i 's/text-slate-800\\\\b/text-slate-800 dark:text-slate-100/g')",
       "Bash(xargs sed -i 's/text-slate-700\\\\b/text-slate-700 dark:text-slate-200/g')",
       "Bash(xargs sed -i 's/text-gray-900\\\\b/text-gray-900 dark:text-white/g')",
-      "Bash(xargs sed -i 's/bg-white\\\\b/bg-white dark:bg-slate-800/g')"
+      "Bash(xargs sed -i 's/bg-white\\\\b/bg-white dark:bg-slate-800/g')",
+      "Bash(inkscape --version)",
+      "Bash(rsvg-convert --version)",
+      "Bash(convert --version)",
+      "Bash(cairosvg --version)",
+      "Bash(cairosvg favicon.svg -o icon-192.png -W 192 -H 192)",
+      "Bash(cairosvg favicon.svg -o icon-512.png -W 512 -H 512)",
+      "Bash(python3 -)",
+      "Bash(pip show *)",
+      "Bash(python FinBridge_Presentation.py)",
+      "Bash(ls /media/piyushw/C058547C58547360/finbridge_screenshot_for_presentation/)",
+      "Read(//media/piyushw/C058547C58547360/finbridge_screenshot_for_presentation/**)"
     ]
   }
 }

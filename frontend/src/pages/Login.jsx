@@ -40,8 +40,8 @@ export default function Login() {
       <div className="hidden lg:flex lg:w-5/12 bg-gradient-to-br from-indigo-900 via-indigo-800 to-violet-900 flex-col justify-between p-10">
         <div>
           <div className="flex items-center gap-3 mb-16">
-            <div className="w-10 h-10 bg-white dark:bg-slate-800/10 rounded-xl flex items-center justify-center border border-white/20">
-              <span className="text-white font-bold text-sm">FB</span>
+            <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-900/40 border border-white/20">
+              <span className="text-white font-black text-sm tracking-tight">FB</span>
             </div>
             <span className="text-white font-bold text-lg">FinBridge</span>
           </div>

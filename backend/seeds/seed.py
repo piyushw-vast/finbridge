@@ -717,7 +717,70 @@ async def seed():
             },
         })
 
-        # ── 17. Bharat Salary Register ──
+        # ── 17. Acme Transaction Ledger — Q1 2026 ──
+        await make_invoice(company1, cadmin1, accountant1, {
+            "file_name": "Acme_Ledger_Q1_2026.xlsx",
+            "file_type": "application/xlsx",
+            "invoice_type": InvoiceType.LEDGER,
+            "status": TransactionStatus.ACCEPTED,
+            "trust_score": 95.0,
+            "days_ago": 30,
+            "confidence_scores": {"vendor_name": 0.97, "total_amount": 0.98, "invoice_date": 0.99},
+            "conflicts": [],
+            "tx": {
+                "vendor_name": "Acme Technologies Pvt Ltd — Accounts Ledger",
+                "invoice_date": "2026-03-31",
+                "total_amount": 2340000.00,
+                "currency": "INR",
+                "line_items": [
+                    {"description": "Opening Balance", "amount": 5200000.0},
+                    {"description": "Total Credits (Q1)", "amount": 8900000.0},
+                    {"description": "Total Debits (Q1)", "amount": 2340000.0},
+                    {"description": "Closing Balance", "amount": 11760000.0},
+                ],
+            },
+        })
+
+        # ── 18. Bharat Payment Receipt — Pidilite advance ──
+        await make_invoice(company2, cadmin2, accountant2, {
+            "file_name": "Pidilite_Advance_Payment_May2026.pdf",
+            "file_type": "application/pdf",
+            "invoice_type": InvoiceType.PAYMENT,
+            "status": TransactionStatus.ACCEPTED,
+            "trust_score": 93.0,
+            "days_ago": 4,
+            "payment_method": "RTGS",
+            "utr_number": "ICIC26050400098871",
+            "bank_name": "ICICI Bank",
+            "conflicts": [],
+            "tx": {
+                "vendor_name": "Pidilite Industries Ltd",
+                "invoice_number": "PAY-ADV-PIL-2026-051",
+                "invoice_date": "2026-05-04",
+                "total_amount": 500000.00,
+                "currency": "INR",
+            },
+        })
+
+        # ── 19. Bharat Bank Statement April 2026 ──
+        await make_invoice(company2, cadmin2, accountant3, {
+            "file_name": "ICICI_BankStatement_Apr2026_Bharat.pdf",
+            "file_type": "application/pdf",
+            "invoice_type": InvoiceType.BANK_STATEMENT,
+            "status": TransactionStatus.ACCEPTED,
+            "trust_score": 89.0,
+            "days_ago": 12,
+            "confidence_scores": {"vendor_name": 0.92, "total_amount": 0.95, "invoice_date": 0.98},
+            "conflicts": [],
+            "tx": {
+                "vendor_name": "ICICI Bank — Current A/C 6282XXXX9901",
+                "invoice_date": "2026-04-30",
+                "total_amount": 18475200.00,
+                "currency": "INR",
+            },
+        })
+
+        # ── 20. Bharat Salary Register ──
         await make_invoice(company2, cadmin2, accountant3, {
             "file_name": "Salary_Register_Mar2026_Bharat.pdf",
             "file_type": "application/pdf",
@@ -996,7 +1059,10 @@ async def seed():
         print(" 14.  Pidilite Raw Material          89/100  Accepted ✓  ₹3.5L")
         print(" 15.  VRL Logistics (suspicious)     52/100  Under Review  3.2× avg amount 🔴")
         print(" 16.  Kirloskar Machinery AMC        86/100  Accepted ✓")
-        print(" 17.  Salary Register Mar 2026       91/100  Accepted ✓  ₹9.45L")
+        print(" 17.  Acme Ledger Q1 2026            95/100  Accepted ✓  Transaction Ledger")
+        print(" 18.  Pidilite Advance Payment       93/100  Accepted ✓  RTGS Payment Receipt")
+        print(" 19.  ICICI Bank Statement Apr 2026  89/100  Accepted ✓  Bank Statement")
+        print(" 20.  Salary Register Mar 2026       91/100  Accepted ✓  ₹9.45L")
         print()
         print("  MIS REPORTS: 3 published")
         print("  NOTIFICATIONS: 7 seeded (3 unread for accountant1, 4 unread for cadmin1)")

@@ -8,10 +8,6 @@ import api from "../../lib/api";
 const DOC_TYPES = [
   { value: "purchase", label: "Purchase Invoice" },
   { value: "sales", label: "Sales Invoice" },
-  { value: "payment", label: "Payment Receipt" },
-  { value: "salary_register", label: "Salary Register" },
-  { value: "bank_statement", label: "Bank Statement" },
-  { value: "ledger", label: "Transaction Ledger" },
 ];
 
 // ─── Single upload ─────────────────────────────────────────────────────────────
