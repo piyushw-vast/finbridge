@@ -118,8 +118,8 @@ function NotificationsPanel({ onClose, onRead }) {
   return (
     <div
       ref={panelRef}
-      className="absolute left-full ml-2 bottom-0 w-80 bg-white rounded-2xl border border-slate-200 shadow-xl z-50 overflow-hidden"
-      style={{ maxHeight: "480px" }}
+      className="fixed w-80 bg-white rounded-2xl border border-slate-200 shadow-xl z-50 overflow-hidden"
+      style={{ left: "272px", top: "16px", maxHeight: "calc(100vh - 32px)" }}
     >
       <div className="flex items-center justify-between px-4 py-3 border-b border-slate-100">
         <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Notifications</h3>

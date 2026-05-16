@@ -61,6 +61,7 @@ export default function CompanyDashboard() {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState(() => searchParams.get("q") || "");
   const [statusFilter, setStatusFilter] = useState(() => searchParams.get("status") || "all");
+  const [docTypeFilter, setDocTypeFilter] = useState("all");
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true);
 
@@ -69,7 +70,7 @@ export default function CompanyDashboard() {
     if (search) params.q = search;
     if (statusFilter !== "all") params.status = statusFilter;
     setSearchParams(params, { replace: true });
-  }, [search, statusFilter]);
+  }, [search, statusFilter]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     function handleKey(e) {
@@ -218,6 +219,31 @@ export default function CompanyDashboard() {
         {/* Spend Insights */}
         <SpendInsights />
 
+        {/* Doc Type Tabs */}
+        <div className="flex items-center gap-1.5 mb-3 flex-wrap">
+          {[
+            { value: "all", label: "All" },
+            { value: "purchase", label: "Purchase" },
+            { value: "sales", label: "Sales" },
+            { value: "payment", label: "Payments" },
+            { value: "bank_statement", label: "Bank Statements" },
+            { value: "salary_register", label: "Salary" },
+            { value: "ledger", label: "Ledger" },
+          ].map(t => (
+            <button
+              key={t.value}
+              onClick={() => setDocTypeFilter(t.value)}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                docTypeFilter === t.value
+                  ? "bg-indigo-600 text-white shadow-sm"
+                  : "bg-white dark:bg-slate-800 border border-slate-200 text-slate-600 dark:text-slate-300 hover:border-indigo-300 hover:text-indigo-600"
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+
         {/* Search + Filter */}
         <div className="flex items-center gap-3 mb-4">
           <div className="relative flex-1 max-w-sm">
@@ -319,7 +345,8 @@ export default function CompanyDashboard() {
                       inv.file_name?.toLowerCase().includes(q) ||
                       inv.invoice_type?.toLowerCase().includes(q);
                     const matchStatus = statusFilter === "all" || inv.status === statusFilter;
-                    return matchSearch && matchStatus;
+                    const matchType = docTypeFilter === "all" || inv.invoice_type === docTypeFilter;
+                    return matchSearch && matchStatus && matchType;
                   })
                   .map(inv => (
                   <tr key={inv.id} className="hover:bg-slate-50 transition-colors group cursor-pointer" onClick={() => navigate(`/company/invoice/${inv.id}`)}>

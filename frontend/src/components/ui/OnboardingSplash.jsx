@@ -49,28 +49,28 @@ export default function OnboardingSplash({ onDone }) {
         <div className="absolute bottom-1/4 right-1/3 w-[300px] h-[300px] bg-violet-600/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-md w-full mx-6">
+      <div className="relative max-w-md w-full mx-auto px-6">
         {/* Logo */}
-        <div className="flex items-center gap-3 mb-10">
-          <div className="w-10 h-10 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-900/50">
-            <span className="text-white font-black text-sm tracking-tight">FB</span>
+        <div className="flex items-center gap-2.5 mb-6">
+          <div className="w-8 h-8 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-900/50">
+            <span className="text-white font-black text-xs tracking-tight">FB</span>
           </div>
           <div>
-            <p className="text-white font-bold text-lg leading-none">FinBridge</p>
-            <p className="text-indigo-400 text-xs mt-0.5">Autonomous Financial Intelligence</p>
+            <p className="text-white font-bold text-base leading-none">FinBridge</p>
+            <p className="text-indigo-400 text-[11px] mt-0.5">Autonomous Financial Intelligence</p>
           </div>
         </div>
 
         {/* Headline */}
-        <h1 className="text-3xl font-bold text-white leading-tight mb-2">
+        <h1 className="text-2xl font-bold text-white leading-tight mb-1.5">
           Welcome, {user?.full_name?.split(" ")[0]}.
         </h1>
-        <p className="text-indigo-300 text-sm mb-10 leading-relaxed">
+        <p className="text-indigo-300 text-xs mb-6 leading-relaxed">
           Your autonomous finance pipeline is initializing…
         </p>
 
         {/* Checklist */}
-        <div className="space-y-4 mb-10">
+        <div className="space-y-3 mb-6">
           {STEPS.map((step, i) => {
             const isVisible = i < visibleSteps;
             const isCurrent = i === visibleSteps - 1 && !done;
@@ -79,7 +79,7 @@ export default function OnboardingSplash({ onDone }) {
                 key={i}
                 className={`flex items-center gap-4 transition-all duration-500 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"}`}
               >
-                <div className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300
+                <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300
                   ${isCurrent ? "bg-indigo-600 ring-4 ring-indigo-600/30" : isVisible ? "bg-emerald-500" : "bg-slate-800"}`}
                 >
                   {isCurrent ? (
@@ -110,13 +110,13 @@ export default function OnboardingSplash({ onDone }) {
 
         {/* Enter button */}
         <div className={`transition-all duration-700 ${done ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-          <div className="flex items-center gap-2 text-emerald-400 text-xs font-semibold mb-4">
+          <div className="flex items-center gap-2 text-emerald-400 text-[11px] font-semibold mb-3">
             <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
             Platform ready — all systems operational
           </div>
           <button
             onClick={handleEnter}
-            className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-4 rounded-2xl text-sm transition-all flex items-center justify-center gap-2 shadow-lg shadow-indigo-900/40"
+            className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3 rounded-2xl text-sm transition-all flex items-center justify-center gap-2 shadow-lg shadow-indigo-900/40"
           >
             Enter FinBridge
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
