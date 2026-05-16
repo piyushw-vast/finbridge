@@ -68,16 +68,16 @@ export default function AgentPipeline({ processingStatus }) {
   const progress = failed ? 25 : currentIdx === -1 ? 0 : Math.round(((currentIdx + 1) / STAGE_ORDER.length) * 100);
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
+    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 shadow-sm p-6">
       <div className="flex items-center justify-between mb-5">
         <div>
-          <h2 className="text-base font-semibold text-slate-900 flex items-center gap-2">
+          <h2 className="text-base font-semibold text-slate-900 dark:text-white flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse inline-block" />
             AI Pipeline Running
           </h2>
           <p className="text-xs text-slate-400 mt-0.5">6 specialized agents collaborating</p>
         </div>
-        <span className="text-sm font-bold text-slate-700">{progress}%</span>
+        <span className="text-sm font-bold text-slate-700 dark:text-slate-200">{progress}%</span>
       </div>
 
       {/* Progress bar */}
@@ -113,7 +113,7 @@ export default function AgentPipeline({ processingStatus }) {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   ) : isCurrent ? (
-                    <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                    <div className="w-2 h-2 bg-white dark:bg-slate-800 rounded-full animate-pulse" />
                   ) : (
                     <svg className={`w-3.5 h-3.5 ${isPending ? "text-slate-400" : "text-white"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d={agent.icon} />
@@ -122,7 +122,7 @@ export default function AgentPipeline({ processingStatus }) {
                 </div>
                 {isCurrent && <span className={`w-1.5 h-1.5 rounded-full ${c.dot} animate-ping flex-shrink-0`} />}
               </div>
-              <p className={`text-xs font-semibold leading-tight ${isCurrent ? c.activeTxt : isDone ? "text-slate-700" : "text-slate-300"}`}>
+              <p className={`text-xs font-semibold leading-tight ${isCurrent ? c.activeTxt : isDone ? "text-slate-700 dark:text-slate-200" : "text-slate-300"}`}>
                 {agent.name}
               </p>
               <p className={`text-[10px] mt-0.5 leading-tight ${isCurrent ? c.activeTxt + " opacity-70" : isDone ? "text-slate-400" : "text-slate-200"}`}>

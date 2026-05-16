@@ -46,7 +46,7 @@ export default function GSTDashboard() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <h1 className="text-2xl font-bold text-slate-900 dark:text-white">GST Tax Dashboard</h1>
+              <h1 className="text-2xl font-bold text-slate-900 dark:text-white dark:text-white">GST Tax Dashboard</h1>
               <span className="text-[10px] bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-800 px-2 py-0.5 rounded-full font-semibold">
                 India GST
               </span>
@@ -112,8 +112,8 @@ export default function GSTDashboard() {
 
             <div className="grid lg:grid-cols-2 gap-6">
               {/* Monthly breakdown */}
-              <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm p-6">
-                <h2 className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Monthly Breakdown</h2>
+              <div className="bg-white dark:bg-slate-800 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm p-6">
+                <h2 className="text-sm font-semibold text-slate-900 dark:text-white dark:text-white mb-1">Monthly Breakdown</h2>
                 <p className="text-xs text-slate-400 dark:text-slate-500 mb-5">Total input credit per month</p>
 
                 {data.monthly.length === 0 ? (
@@ -123,10 +123,10 @@ export default function GSTDashboard() {
                     {data.monthly.map((m) => (
                       <div key={m.month}>
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">
+                          <span className="text-xs font-medium text-slate-700 dark:text-slate-200 dark:text-slate-300">
                             {m.label || m.month}
                           </span>
-                          <span className="text-xs font-semibold text-slate-900 dark:text-white font-mono">
+                          <span className="text-xs font-semibold text-slate-900 dark:text-white dark:text-white font-mono">
                             {fmt(m.total)}
                           </span>
                         </div>
@@ -152,8 +152,8 @@ export default function GSTDashboard() {
               </div>
 
               {/* By vendor */}
-              <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm p-6">
-                <h2 className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Top Vendors by GST</h2>
+              <div className="bg-white dark:bg-slate-800 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm p-6">
+                <h2 className="text-sm font-semibold text-slate-900 dark:text-white dark:text-white mb-1">Top Vendors by GST</h2>
                 <p className="text-xs text-slate-400 dark:text-slate-500 mb-5">Input credit contribution per vendor</p>
 
                 {data.by_vendor.length === 0 ? (
@@ -166,8 +166,8 @@ export default function GSTDashboard() {
                           <span className="text-[10px] font-bold text-slate-400 w-4 flex-shrink-0">{i + 1}</span>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center justify-between">
-                              <span className="text-xs font-medium text-slate-700 dark:text-slate-300 truncate">{v.vendor}</span>
-                              <span className="text-xs font-semibold text-slate-900 dark:text-white font-mono ml-2 flex-shrink-0">{fmt(v.total)}</span>
+                              <span className="text-xs font-medium text-slate-700 dark:text-slate-200 dark:text-slate-300 truncate">{v.vendor}</span>
+                              <span className="text-xs font-semibold text-slate-900 dark:text-white dark:text-white font-mono ml-2 flex-shrink-0">{fmt(v.total)}</span>
                             </div>
                             <div className="mt-1 h-1.5 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
                               <div
@@ -191,9 +191,9 @@ export default function GSTDashboard() {
 
             {/* Full table */}
             {data.monthly.length > 0 && (
-              <div className="mt-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm overflow-hidden">
+              <div className="mt-6 bg-white dark:bg-slate-800 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm overflow-hidden">
                 <div className="px-6 py-4 border-b border-slate-50 dark:border-slate-700">
-                  <h2 className="text-sm font-semibold text-slate-900 dark:text-white">GST Filing Summary</h2>
+                  <h2 className="text-sm font-semibold text-slate-900 dark:text-white dark:text-white">GST Filing Summary</h2>
                   <p className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">Month-wise CGST / SGST / IGST ready for GSTR-2 filing</p>
                 </div>
                 <div className="overflow-x-auto">
@@ -210,19 +210,19 @@ export default function GSTDashboard() {
                     <tbody>
                       {data.monthly.map((m, i) => (
                         <tr key={m.month} className={`border-b border-slate-50 dark:border-slate-800 ${i % 2 === 0 ? "" : "bg-slate-50/50 dark:bg-slate-900/20"}`}>
-                          <td className="px-5 py-3 font-medium text-slate-700 dark:text-slate-300">{m.label || m.month}</td>
+                          <td className="px-5 py-3 font-medium text-slate-700 dark:text-slate-200 dark:text-slate-300">{m.label || m.month}</td>
                           <td className="px-5 py-3 text-slate-500 dark:text-slate-400">{m.count}</td>
-                          <td className="px-5 py-3 font-mono text-slate-700 dark:text-slate-300">{fmt(m.invoice_total)}</td>
+                          <td className="px-5 py-3 font-mono text-slate-700 dark:text-slate-200 dark:text-slate-300">{fmt(m.invoice_total)}</td>
                           <td className="px-5 py-3 font-mono text-emerald-700 dark:text-emerald-400">{fmt(m.cgst)}</td>
                           <td className="px-5 py-3 font-mono text-violet-700 dark:text-violet-400">{fmt(m.sgst)}</td>
                           <td className="px-5 py-3 font-mono text-amber-700 dark:text-amber-400">{fmt(m.igst)}</td>
-                          <td className="px-5 py-3 font-mono font-semibold text-slate-900 dark:text-white">{fmt(m.total)}</td>
+                          <td className="px-5 py-3 font-mono font-semibold text-slate-900 dark:text-white dark:text-white">{fmt(m.total)}</td>
                         </tr>
                       ))}
                       <tr className="bg-slate-50 dark:bg-slate-900/40 font-semibold">
-                        <td className="px-5 py-3 text-slate-700 dark:text-slate-300">Total</td>
+                        <td className="px-5 py-3 text-slate-700 dark:text-slate-200 dark:text-slate-300">Total</td>
                         <td className="px-5 py-3 text-slate-500 dark:text-slate-400">{data.invoice_count}</td>
-                        <td className="px-5 py-3 font-mono text-slate-700 dark:text-slate-300">—</td>
+                        <td className="px-5 py-3 font-mono text-slate-700 dark:text-slate-200 dark:text-slate-300">—</td>
                         <td className="px-5 py-3 font-mono text-emerald-700 dark:text-emerald-400">{fmt(data.total_cgst)}</td>
                         <td className="px-5 py-3 font-mono text-violet-700 dark:text-violet-400">{fmt(data.total_sgst)}</td>
                         <td className="px-5 py-3 font-mono text-amber-700 dark:text-amber-400">{fmt(data.total_igst)}</td>

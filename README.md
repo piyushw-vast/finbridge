@@ -1,39 +1,20 @@
 # FinBridge
 
-AI-powered invoice exchange platform — replaces email/WhatsApp invoice sharing with structured, auditable, multi-engine AI extraction and review workflows.
+**A Multi-Tenant Financial Data Exchange Platform** — AI-powered invoice scanning, multi-role workflows, and financial reconciliation between businesses and accounting firms.
 
 ---
 
-## Live Demo
+## What It Does
 
-**[https://finbridge-demo.vercel.app](https://finbridge-demo.vercel.app)**
+Mid-sized businesses exchange invoices, payments, salary registers, and bank statements with accounting firms via email and WhatsApp. FinBridge replaces that chaos with:
 
-| Role | Email | Password |
-|---|---|---|
-| Platform Admin | admin@finbridge.com | admin123 |
-| Firm Admin | firmadmin@demo.com | firm123 |
-| Accountant | accountant@demo.com | acc123 |
-| Company Admin | companyadmin@acme.com | company123 |
-| Company User | user@acme.com | user123 |
-
----
-
-## Key Features
-
-- **Multi-engine AI extraction** — Groq Vision (Llama 4 Scout), PyMuPDF, and PaddleOCR run in parallel; results are consensus-merged with per-field confidence scores and a trust score (0–100)
-- **Smart auto-routing** — invoices scoring ≥85 are auto-accepted; 60–84 go to the review queue; <60 require mandatory manual review
-- **Conflict detection** — field-level disagreements between engines are surfaced as conflicts and highlighted for the reviewer
-- **PDF + image support** — live PDF viewer and image viewer inline on the review page
-- **Vendor Intelligence** — per-vendor historical stats (avg amount, invoice count, sparkline) with anomaly alerts when current invoice is >1.5× or <0.5× average
-- **GST breakdown** — CGST/SGST split shown inline on invoice detail with intra-state badge
-- **Bulk accept** — accountants can select multiple invoices from the queue and accept in one click
-- **Bank statement processing** — upload a PDF bank statement, all transactions are extracted and auto-categorized
-- **Spend insights** — monthly spend charts and category breakdown per company
-- **MIS reports** — firm accountants publish reports; companies view them in-app
-- **Audit trail** — every upload, correction, accept, and reject is logged with timestamp and user
-- **Comment threads** — per-invoice discussion between company and accountant
-- **Multi-tenant** — platform admin → firms → companies hierarchy with full role isolation
-- **Duplicate detection** — same invoice number + vendor triggers a duplicate warning
+- **AI bill scanning** — upload any invoice image or PDF; Groq Vision + OCR extracts all fields in seconds
+- **Three-tier tenancy** — Platform Admin → Accounting Firm Admin → Company Admin/Users
+- **Accountant review workflow** — review, correct, accept or reject extracted transactions
+- **MIS reports** — accountants publish reports; companies can view and download as PDF
+- **GST Dashboard** — monthly GST summary, vendor analytics, payment aging
+- **Audit trail** — every upload, modification, and acceptance is logged
+- **PWA** — installable on mobile for on-the-go invoice uploads
 
 ---
 
@@ -41,121 +22,135 @@ AI-powered invoice exchange platform — replaces email/WhatsApp invoice sharing
 
 | Layer | Tech |
 |---|---|
-| Backend | FastAPI + SQLAlchemy async + asyncpg |
-| Database | PostgreSQL (Supabase) |
-| Storage | Supabase Storage |
-| AI Extraction | Groq (Llama 4 Scout vision), PyMuPDF, PaddleOCR |
-| Frontend | React + Vite + Tailwind CSS v4 |
-| Auth | JWT (python-jose) |
+| Frontend | React 18, Vite, Tailwind CSS |
+| Backend | FastAPI (Python), SQLAlchemy async, Alembic |
+| Database | PostgreSQL |
+| AI | Groq Vision API (LLaMA 3.2 Vision), PyMuPDF |
+| Auth | JWT, role-based access control |
+| Storage | Local filesystem (configurable) |
 
 ---
 
-## AI Extraction Pipeline
+## Prerequisites
 
-```
-Upload → Preprocess (deskew / denoise / sharpen / contrast)
-       ↓
-       ├── Groq Vision (Llama 4 Scout) ──────┐
-       ├── PyMuPDF text extraction ──────────→ Consensus Engine → Field confidence (0–1)
-       └── PaddleOCR fallback ───────────────┘                  → Conflict detection
-                                                                 → Trust score (0–100)
-                                                                 → Auto-routing:
-                                                                     ≥85 → Auto-accepted
-                                                                     60–84 → Review queue
-                                                                     <60  → Mandatory review
-```
-
----
-
-## End-to-End Demo Flow
-
-1. Log in as **Company Admin** (`companyadmin@acme.com`)
-2. Dashboard shows spend insights (monthly chart + category breakdown) and invoice stats
-3. Click **Upload Invoice** → drop a PDF or image → watch live AI processing stages
-4. View extracted fields with inline confidence scores, conflicts highlighted, trust score ring
-5. Audit trail shows the full history of the invoice
-6. Log in as **Accountant** (`accountant@demo.com`)
-7. Review queue shows invoices sorted by risk level (red/amber/green)
-8. Click any invoice → review confidence scores, vendor intel, and PDF viewer → correct fields → Accept or Reject
-9. Use checkboxes to bulk-accept multiple low-risk invoices at once
-10. Switch back to company admin → invoice status updated, notification received in sidebar
-11. Firm Admin uploads MIS report → company sees it in Reports
-
----
-
-## Roadmap
-
-- Zoho / QuickBooks / Tally export integration
-- Mobile PWA for on-the-go uploads
-- Advanced MIS report generation with charts
-- Payment gateway reconciliation
-- Email notifications for status changes
-- Recurring invoice detection and auto-matching
-- Multi-currency support with live FX rates
-
----
-
-## Local Development
-
-### Prerequisites
-- Python 3.11+
+- Python 3.10+
 - Node.js 18+
-- A Supabase project (free tier works)
-- A Groq API key (free at console.groq.com)
+- PostgreSQL 14+
+- A Groq API key (free at https://console.groq.com)
 
-### 1. Clone & configure backend
+---
+
+## Setup
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/piyushw-vast/finbridge.git
+cd finbridge
+```
+
+### 2. Backend
 
 ```bash
 cd backend
-cp .env.example .env
-```
 
-Edit `.env`:
-
-```env
-DATABASE_URL=postgresql+asyncpg://postgres:<password>@<host>:5432/postgres
-SUPABASE_URL=https://<project>.supabase.co
-SUPABASE_SERVICE_KEY=<service_role_key>
-SUPABASE_STORAGE_BUCKET=invoices
-SECRET_KEY=your-secret-key-min-32-chars
-GROQ_API_KEY=gsk_...
-```
-
-### 2. Run database migrations
-
-```bash
-cd backend
+# Create virtual environment
 python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
+source venv/bin/activate        # Windows: venv\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
+
+# Configure environment
+cp .env.example .env
+# Edit .env — set DATABASE_URL and GROQ_API_KEY
+
+# Run migrations
 alembic upgrade head
-```
 
-### 3. Seed demo data
-
-```bash
-cd backend
+# Seed demo data
 python seeds/seed.py
-```
 
-### 4. Start backend
-
-```bash
-cd backend
+# Start server
 uvicorn app.main:app --reload --port 8000
 ```
 
-API docs at: http://localhost:8000/docs
+**Required `.env` values:**
 
-### 5. Start frontend
+```
+DATABASE_URL=postgresql+asyncpg://postgres:password@localhost:5432/finbridge
+GROQ_API_KEY=your_groq_api_key_here
+SECRET_KEY=any-long-random-string
+UPLOAD_DIR=./uploads
+```
+
+### 3. Frontend
 
 ```bash
 cd frontend
+
 npm install
+
+# Start dev server
 npm run dev
 ```
 
-App at: http://localhost:5173
+Open http://localhost:5173
+
+---
+
+## Demo Accounts
+
+After running `seed.py`, the following accounts are available:
+
+| Role | Email | Password |
+|---|---|---|
+| Platform Admin | admin@finbridge.com | Admin@123 |
+| Firm Admin | firm@vastaccounting.com | Firm@123 |
+| Accountant | accountant@vastaccounting.com | Accountant@123 |
+| Company Admin | admin@techcorp.com | Company@123 |
+| Company User | user@techcorp.com | User@123 |
+
+---
+
+## Core Features Built
+
+### Must-Have (All Complete)
+- Multi-tenant role-based auth across all 3 tenancy levels
+- Company onboarding with configurable payment heads and sub-heads by business type
+- Invoice upload — purchase, sales, payments, salary registers, bank statements, ledgers
+- AI-powered bill scanning with Groq Vision + consensus extraction engine
+- Accountant review workflow — refine, correct, accept, reject
+- MIS Reports — accountant uploads, company views and downloads as PDF
+
+### Stretch Goals (All Complete)
+- PWA — installable on Android/iOS home screen
+- Dashboard with insights — cash flow, top expense heads, vendor analytics
+- Audit trail — every action logged with actor and timestamp
+- Notifications — real-time bell icon, per-event types
+- GST Dashboard — CGST/SGST/IGST split, monthly trend, payment aging
+- Bulk document upload — bank statements, salary registers (up to 10 files)
+
+---
+
+## Architecture
+
+```
+┌─────────────────────────────────────────┐
+│              React Frontend              │
+│  Company | Accountant | Firm | Admin     │
+└──────────────────┬──────────────────────┘
+                   │ REST API
+┌──────────────────▼──────────────────────┐
+│           FastAPI Backend                │
+│  Auth | Invoices | Reports | Firms       │
+└────────┬──────────────────┬─────────────┘
+         │                  │
+┌────────▼──────┐  ┌────────▼──────────┐
+│  PostgreSQL   │  │  Groq Vision API  │
+│  (asyncpg)    │  │  AI Extraction    │
+└───────────────┘  └───────────────────┘
+```
 
 ---
 
@@ -165,18 +160,28 @@ App at: http://localhost:5173
 finbridge/
 ├── backend/
 │   ├── app/
-│   │   ├── api/v1/endpoints/     # FastAPI routes (invoices, firms, companies, reports, notifications)
-│   │   ├── models/               # SQLAlchemy models (Invoice, AuditLog, Notification, ...)
-│   │   ├── services/extraction/  # Groq, PyMuPDF, OCR extractors + consensus engine
-│   │   ├── utils/                # Audit logging, notification helpers
-│   │   └── core/                 # Config, database, auth deps
-│   ├── seeds/seed.py             # Full demo dataset
-│   └── alembic/                  # DB migrations
+│   │   ├── api/v1/endpoints/   # REST endpoints
+│   │   ├── models/             # SQLAlchemy models
+│   │   ├── core/               # DB, auth, config
+│   │   └── main.py
+│   ├── alembic/                # DB migrations
+│   └── seeds/seed.py           # Demo data
 └── frontend/
     └── src/
-        ├── pages/                # company/, accountant/, firm/, admin/
-        ├── components/
-        │   ├── layout/           # Sidebar (with notifications dropdown), Layout
-        │   └── ui/               # TrustScoreBadge, FieldConfidence, AuditTrail, SpendInsights, LiveProcessing
-        └── context/              # AuthContext (JWT)
+        ├── pages/
+        │   ├── company/        # Company user flows
+        │   ├── accountant/     # Review workflow
+        │   ├── firm/           # Firm admin
+        │   └── admin/          # Platform admin
+        └── components/         # Shared UI components
 ```
+
+---
+
+## What We'd Build Next
+
+- Integration with Zoho Books / Tally / QuickBooks
+- Mobile-native app (React Native) for field invoice capture
+- Automated bank statement reconciliation with ML categorization
+- Multi-currency and forex handling
+- Scheduled report generation and email delivery

@@ -20,18 +20,18 @@ export default function BankStatementView({ invoice }) {
           { label: "Total Credits", value: fmt(totalCredits), sub: "Money In", color: "text-emerald-600" },
           { label: "Total Debits", value: fmt(totalDebits), sub: "Money Out", color: "text-rose-500" },
         ].map(c => (
-          <div key={c.label} className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4">
+          <div key={c.label} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 shadow-sm p-4">
             <p className="text-xs text-slate-400 font-medium mb-1">{c.label}</p>
-            <p className={`text-base font-bold truncate ${c.color || "text-slate-800"}`}>{c.value}</p>
+            <p className={`text-base font-bold truncate ${c.color || "text-slate-800 dark:text-slate-100"}`}>{c.value}</p>
             <p className="text-xs text-slate-400 mt-0.5">{c.sub}</p>
           </div>
         ))}
       </div>
 
       {/* Transaction table */}
-      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
-          <h2 className="text-base font-semibold text-slate-900">Transactions</h2>
+          <h2 className="text-base font-semibold text-slate-900 dark:text-white">Transactions</h2>
           <span className="text-xs text-slate-400 bg-slate-100 px-2.5 py-1 rounded-full font-medium">
             {transactions.length} rows extracted
           </span>
@@ -55,7 +55,7 @@ export default function BankStatementView({ invoice }) {
                 {transactions.map((txn, i) => (
                   <tr key={i} className={`hover:bg-slate-50 transition-colors ${txn.debit ? "hover:bg-rose-50/30" : "hover:bg-emerald-50/30"}`}>
                     <td className="px-4 py-3 text-slate-500 whitespace-nowrap text-xs">{txn.date || "—"}</td>
-                    <td className="px-4 py-3 text-slate-800 max-w-[240px]">
+                    <td className="px-4 py-3 text-slate-800 dark:text-slate-100 max-w-[240px]">
                       <p className="truncate text-xs" title={txn.description}>{txn.description || "—"}</p>
                     </td>
                     <td className="px-4 py-3 text-slate-400 text-xs whitespace-nowrap">{txn.reference || "—"}</td>

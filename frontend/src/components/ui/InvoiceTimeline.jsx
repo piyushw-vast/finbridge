@@ -127,7 +127,7 @@ export default function InvoiceTimeline({ invoice }) {
   }, [invoice.id]);
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm p-6">
+    <div className="bg-white dark:bg-slate-800 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm p-6">
       <div className="flex items-center justify-between mb-5">
         <div className="flex items-center gap-2.5">
           <div className="w-7 h-7 bg-slate-900 dark:bg-slate-700 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -136,11 +136,11 @@ export default function InvoiceTimeline({ invoice }) {
             </svg>
           </div>
           <div>
-            <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Invoice Journey</h2>
+            <h2 className="text-sm font-semibold text-slate-900 dark:text-white dark:text-white">Invoice Journey</h2>
             <p className="text-xs text-slate-400 dark:text-slate-500">Autonomous pipeline lifecycle</p>
           </div>
         </div>
-        <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-700 px-2 py-1 rounded-lg">
+        <span className="text-[10px] font-mono text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-2 py-1 rounded-lg font-semibold">
           ~{(totalMs / 1000).toFixed(1)}s total
         </span>
       </div>
@@ -205,19 +205,19 @@ export default function InvoiceTimeline({ invoice }) {
                         ? "text-rose-700 dark:text-rose-400"
                         : state === "warn" || state === "pending"
                         ? "text-amber-700 dark:text-amber-400"
-                        : "text-slate-800 dark:text-slate-100"
+                        : "text-slate-800 dark:text-slate-100 dark:text-slate-100"
                     }`}
                   >
                     {step.label}
                   </p>
                   <div className="flex items-center gap-1.5 flex-shrink-0">
                     {step.dur && (
-                      <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-700 px-1.5 py-0.5 rounded">
+                      <span className="text-[10px] font-mono text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 border border-indigo-100 dark:border-indigo-800 px-1.5 py-0.5 rounded font-semibold">
                         {step.dur}
                       </span>
                     )}
                     {step.time && (
-                      <span className="text-[10px] text-slate-300 dark:text-slate-600 font-mono">
+                      <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">
                         {fmtTime(step.time)}
                       </span>
                     )}

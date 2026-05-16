@@ -205,7 +205,7 @@ export default function InvoiceReview() {
                   : <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />}
               </svg>
             </div>
-            <h2 className="text-xl font-bold text-slate-900 capitalize">Invoice {actionDone}</h2>
+            <h2 className="text-xl font-bold text-slate-900 dark:text-white capitalize">Invoice {actionDone}</h2>
             <p className="text-slate-500 text-sm mt-1">Returning to review queue...</p>
           </div>
         </div>
@@ -228,10 +228,10 @@ export default function InvoiceReview() {
         </div>
 
         {/* Header */}
-        <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 mb-5">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 shadow-sm p-6 mb-5">
           <div className="flex items-center justify-between gap-4">
             <div className="min-w-0">
-              <h1 className="text-xl font-bold text-slate-900 truncate">{invoice.file_name}</h1>
+              <h1 className="text-xl font-bold text-slate-900 dark:text-white truncate">{invoice.file_name}</h1>
               <p className="text-slate-400 text-sm capitalize mt-1">{invoice.invoice_type?.replace("_", " ")}</p>
               <div className="flex items-center gap-2 mt-2.5 flex-wrap">
                 <span className="inline-flex items-center gap-1.5 bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-semibold px-2.5 py-1 rounded-full">
@@ -354,7 +354,7 @@ export default function InvoiceReview() {
             </h3>
             <div className="grid grid-cols-2 gap-4">
               {[{ label: "This Invoice", inv: invoice }, { label: "Original", inv: originalInvoice }].map(({ label, inv: d }) => (
-                <div key={label} className="bg-white rounded-xl p-3 border border-amber-100">
+                <div key={label} className="bg-white dark:bg-slate-800 rounded-xl p-3 border border-amber-100">
                   <p className="text-xs font-semibold text-amber-700 mb-2 uppercase tracking-wide">{label}</p>
                   {[
                     ["Vendor", d.transaction?.vendor_name],
@@ -364,7 +364,7 @@ export default function InvoiceReview() {
                   ].map(([field, val]) => (
                     <div key={field} className="flex justify-between text-xs py-1 border-b border-amber-50 last:border-0">
                       <span className="text-slate-400 font-medium">{field}</span>
-                      <span className="text-slate-700 font-semibold truncate max-w-[120px]">{val || "—"}</span>
+                      <span className="text-slate-700 dark:text-slate-200 font-semibold truncate max-w-[120px]">{val || "—"}</span>
                     </div>
                   ))}
                 </div>
@@ -421,8 +421,8 @@ export default function InvoiceReview() {
 
         {/* Original Document — full width above the grid */}
         {invoice.file_url && (
-          <div className="mt-0 mb-5 bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
-            <h2 className="text-base font-semibold text-slate-900 mb-3">Original Document</h2>
+          <div className="mt-0 mb-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 shadow-sm p-6">
+            <h2 className="text-base font-semibold text-slate-900 dark:text-white mb-3">Original Document</h2>
             {!docUrl ? (
               <div className="h-24 flex items-center justify-center text-slate-400 text-sm">Loading document...</div>
             ) : invoice.file_type === "application/pdf" ? (
@@ -443,8 +443,8 @@ export default function InvoiceReview() {
           <RiskRadar invoice={invoice} tx={tx} />
 
           {/* Field Confidence */}
-          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
-            <h2 className="text-base font-semibold text-slate-900 mb-1">Extraction Confidence</h2>
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 shadow-sm p-6">
+            <h2 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Extraction Confidence</h2>
             <p className="text-xs text-slate-400 mb-4">Validated across Groq AI, PyMuPDF and OCR</p>
             <div>
               {Object.entries({
@@ -473,8 +473,8 @@ export default function InvoiceReview() {
           </div>
 
           {/* Correction Form */}
-          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
-            <h2 className="text-base font-semibold text-slate-900 mb-1">Review & Correct</h2>
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 shadow-sm p-6">
+            <h2 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Review & Correct</h2>
             <p className="text-xs text-slate-400 mb-4">Flagged fields have low confidence or conflicts</p>
 
             <div className="space-y-3">

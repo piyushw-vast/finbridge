@@ -39,7 +39,7 @@ export default function Navbar() {
         <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
           <span className="text-white font-bold text-sm">F</span>
         </div>
-        <span className="text-lg font-bold text-gray-900">FinBridge</span>
+        <span className="text-lg font-bold text-gray-900 dark:text-white">FinBridge</span>
       </div>
 
       <div className="flex items-center gap-4">
@@ -65,7 +65,7 @@ export default function Navbar() {
             </span>
           </div>
           <div className="hidden sm:block">
-            <p className="text-sm font-medium text-gray-900">{user?.full_name}</p>
+            <p className="text-sm font-medium text-gray-900 dark:text-white">{user?.full_name}</p>
             <p className="text-xs text-gray-500">{ROLE_LABELS[user?.role]}</p>
           </div>
         </div>

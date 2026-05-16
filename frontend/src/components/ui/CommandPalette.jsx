@@ -203,7 +203,7 @@ export default function CommandPalette({ onExportAudit }) {
     <div className="fixed inset-0 z-[200] flex items-start justify-center pt-[12vh] px-4">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setOpen(false)} />
 
-      <div className="relative w-full max-w-xl bg-white dark:bg-slate-900 rounded-2xl shadow-2xl ring-1 ring-black/10 dark:ring-white/10 overflow-hidden">
+      <div className="relative w-full max-w-xl bg-white dark:bg-slate-800 dark:bg-slate-900 rounded-2xl shadow-2xl ring-1 ring-black/10 dark:ring-white/10 overflow-hidden">
         {/* Search bar */}
         <div className="flex items-center gap-3 px-4 py-3.5 border-b border-slate-100 dark:border-slate-800">
           <svg className="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -214,7 +214,7 @@ export default function CommandPalette({ onExportAudit }) {
             value={query}
             onChange={(e) => { setQuery(e.target.value); setSelected(0); }}
             placeholder="Search invoices, vendors, actions…"
-            className="flex-1 bg-transparent text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none min-w-0"
+            className="flex-1 bg-transparent text-sm text-slate-900 dark:text-white dark:text-white placeholder-slate-400 focus:outline-none min-w-0"
           />
           {loadingInvoices && (
             <svg className="w-4 h-4 text-slate-400 animate-spin flex-shrink-0" fill="none" viewBox="0 0 24 24">
@@ -276,7 +276,7 @@ export default function CommandPalette({ onExportAudit }) {
 
                       {/* Label + sub */}
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-slate-900 dark:text-white truncate">{item.label}</p>
+                        <p className="text-sm font-medium text-slate-900 dark:text-white dark:text-white truncate">{item.label}</p>
                         {(item.sub || item.vendor) && (
                           <p className="text-xs text-slate-400 dark:text-slate-500 truncate">
                             {item.vendor ? `${item.vendor}${item.sub ? " · " + item.sub : ""}` : item.sub}
@@ -308,7 +308,7 @@ export default function CommandPalette({ onExportAudit }) {
           ].map(({ keys, label }) => (
             <div key={label} className="flex items-center gap-1 text-[10px] text-slate-400">
               {keys.map((k) => (
-                <kbd key={k} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-1.5 py-0.5 rounded font-mono shadow-sm">
+                <kbd key={k} className="bg-white dark:bg-slate-800 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-1.5 py-0.5 rounded font-mono shadow-sm">
                   {k}
                 </kbd>
               ))}

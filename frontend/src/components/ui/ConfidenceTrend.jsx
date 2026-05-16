@@ -16,10 +16,10 @@ export default function ConfidenceTrend() {
   const maxScore = 100;
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 mb-6">
-      <div className="flex items-center justify-between mb-4">
+    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 shadow-sm p-5 mb-4">
+      <div className="flex items-center justify-between mb-3">
         <div>
-          <h2 className="text-base font-semibold text-slate-900">AI Confidence Trend</h2>
+          <h2 className="text-base font-semibold text-slate-900 dark:text-white">AI Confidence Trend</h2>
           <p className="text-xs text-slate-400 mt-0.5">Average trust score per day — last 30 days</p>
         </div>
         <div className="flex gap-4 text-center">
@@ -32,14 +32,14 @@ export default function ConfidenceTrend() {
             <p className="text-xs text-slate-400">Auto-accepted</p>
           </div>
           <div>
-            <p className="text-xl font-bold text-slate-700">{data.total_processed}</p>
+            <p className="text-xl font-bold text-slate-700 dark:text-slate-200">{data.total_processed}</p>
             <p className="text-xs text-slate-400">Processed</p>
           </div>
         </div>
       </div>
 
       {trend.length === 0 ? (
-        <p className="text-sm text-slate-400 text-center py-8">No data yet for the last 30 days</p>
+        <p className="text-sm text-slate-400 text-center py-3">No data yet for the last 30 days</p>
       ) : (
         <div className="flex items-end gap-1.5 h-24">
           {trend.map((d, i) => {

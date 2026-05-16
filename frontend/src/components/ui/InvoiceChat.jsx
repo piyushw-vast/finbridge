@@ -50,10 +50,10 @@ export default function InvoiceChat({ companyId }) {
 
       {/* Chat panel */}
       {open && (
-        <div className="fixed bottom-24 right-6 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 flex flex-col overflow-hidden" style={{ height: "420px" }}>
+        <div className="fixed bottom-24 right-6 w-80 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 z-50 flex flex-col overflow-hidden" style={{ height: "420px" }}>
           {/* Header */}
           <div className="bg-indigo-600 px-4 py-3 flex items-center gap-2.5">
-            <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-white dark:bg-slate-800/20 rounded-full flex items-center justify-center">
               <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h16a2 2 0 012 2v10a2 2 0 01-2 2h-2" />
               </svg>
@@ -71,7 +71,7 @@ export default function InvoiceChat({ companyId }) {
                 <div className={`max-w-[85%] rounded-2xl px-3 py-2 text-sm leading-relaxed ${
                   m.role === "user"
                     ? "bg-indigo-600 text-white rounded-br-sm"
-                    : "bg-slate-100 text-slate-800 rounded-bl-sm"
+                    : "bg-slate-100 text-slate-800 dark:text-slate-100 rounded-bl-sm"
                 }`}>
                   {m.text}
                 </div>

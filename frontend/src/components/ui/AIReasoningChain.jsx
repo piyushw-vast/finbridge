@@ -113,7 +113,7 @@ export default function AIReasoningChain({ invoice, tx }) {
   }, [replayKey]);
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm p-6">
+    <div className="bg-white dark:bg-slate-800 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm p-6">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2.5">
           <div className="w-7 h-7 bg-indigo-50 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -122,7 +122,7 @@ export default function AIReasoningChain({ invoice, tx }) {
             </svg>
           </div>
           <div>
-            <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Autonomous Verification Pipeline</h2>
+            <h2 className="text-sm font-semibold text-slate-900 dark:text-white dark:text-white">Autonomous Verification Pipeline</h2>
             <p className="text-xs text-slate-400 dark:text-slate-500">Replayable AI reasoning audit trail</p>
           </div>
         </div>
@@ -180,7 +180,7 @@ export default function AIReasoningChain({ invoice, tx }) {
                 <p
                   className={`text-xs leading-relaxed ${step.final ? "font-semibold " : ""}${
                     step.ok
-                      ? "text-slate-700 dark:text-slate-300"
+                      ? "text-slate-700 dark:text-slate-200 dark:text-slate-300"
                       : step.warn
                       ? "text-amber-700 dark:text-amber-400"
                       : "text-rose-600 dark:text-rose-400"

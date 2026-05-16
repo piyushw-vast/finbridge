@@ -63,7 +63,7 @@ export default function FraudSignals({ companyId }) {
   const visibleSignals = expanded ? data.signals : data.signals.slice(0, 4);
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm mb-6 overflow-hidden">
+    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 shadow-sm mb-6 overflow-hidden">
       <div className="flex items-center justify-between px-5 py-4 border-b border-slate-50">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 bg-rose-50 rounded-xl flex items-center justify-center">
@@ -72,7 +72,7 @@ export default function FraudSignals({ companyId }) {
             </svg>
           </div>
           <div>
-            <h3 className="font-semibold text-slate-900 text-sm">Financial Lie Detector™</h3>
+            <h3 className="font-semibold text-slate-900 dark:text-white text-sm">Financial Lie Detector™</h3>
             <p className="text-xs text-slate-400">{data.summary.affected_invoices} invoice{data.summary.affected_invoices !== 1 ? "s" : ""} with behavioral anomalies</p>
           </div>
         </div>
@@ -103,7 +103,7 @@ export default function FraudSignals({ companyId }) {
               <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5 ${cfg.dot}`} />
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
-                  <p className="text-sm font-medium text-slate-800">{SIGNAL_LABELS[s.signal] || s.signal}</p>
+                  <p className="text-sm font-medium text-slate-800 dark:text-slate-100">{SIGNAL_LABELS[s.signal] || s.signal}</p>
                   <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded ${cfg.bg} ${cfg.color} border ${cfg.border}`}>{cfg.label}</span>
                 </div>
                 <p className="text-xs text-slate-400 mt-0.5 truncate">{s.file_name} · {s.detail}</p>

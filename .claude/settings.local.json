@@ -54,7 +54,17 @@
       "Bash(python3 -c \"import matplotlib; print\\(matplotlib.__version__\\)\")",
       "Bash(git init *)",
       "Bash(git branch *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git rm *)",
+      "Bash(git config *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(xargs sed -i 's/text-slate-900\\\\b/text-slate-900 dark:text-white/g')",
+      "Bash(xargs sed -i 's/text-slate-800\\\\b/text-slate-800 dark:text-slate-100/g')",
+      "Bash(xargs sed -i 's/text-slate-700\\\\b/text-slate-700 dark:text-slate-200/g')",
+      "Bash(xargs sed -i 's/text-gray-900\\\\b/text-gray-900 dark:text-white/g')",
+      "Bash(xargs sed -i 's/bg-white\\\\b/bg-white dark:bg-slate-800/g')"
     ]
   }
 }

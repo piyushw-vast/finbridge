@@ -38,14 +38,14 @@ export default function ConsensusHeatmap({ invoice, tx }) {
   }).length;
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm p-6">
+    <div className="bg-white dark:bg-slate-800 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm p-6">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h2 className="text-base font-semibold text-slate-900 dark:text-white">Consensus Heatmap</h2>
+          <h2 className="text-base font-semibold text-slate-900 dark:text-white dark:text-white">Consensus Heatmap</h2>
           <p className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">Per-engine agreement inferred from consensus confidence scores</p>
         </div>
         <div className="text-right">
-          <p className="text-xl font-bold text-slate-900 dark:text-white">{rows.length > 0 ? Math.round((overallAgreement / rows.length) * 100) : 0}%</p>
+          <p className="text-xl font-bold text-slate-900 dark:text-white dark:text-white">{rows.length > 0 ? Math.round((overallAgreement / rows.length) * 100) : 0}%</p>
           <p className="text-xs text-slate-400 dark:text-slate-500">consensus</p>
         </div>
       </div>

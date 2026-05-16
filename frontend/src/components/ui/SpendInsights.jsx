@@ -59,14 +59,14 @@ export default function SpendInsights() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
       {/* Monthly Spend Chart */}
-      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 shadow-sm p-6">
         <div className="flex items-center justify-between mb-5">
           <div>
-            <h3 className="text-sm font-semibold text-slate-900">Monthly Spend</h3>
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Monthly Spend</h3>
             <p className="text-xs text-slate-400 mt-0.5">Accepted invoices only</p>
           </div>
           <div className="text-right">
-            <p className="text-lg font-bold text-slate-900">₹{(data.total_spend / 100000).toFixed(1)}L</p>
+            <p className="text-lg font-bold text-slate-900 dark:text-white">₹{(data.total_spend / 100000).toFixed(1)}L</p>
             <p className="text-xs text-slate-400">total</p>
           </div>
         </div>
@@ -77,10 +77,10 @@ export default function SpendInsights() {
       </div>
 
       {/* Category Breakdown */}
-      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 shadow-sm p-6">
         <div className="flex items-center justify-between mb-5">
           <div>
-            <h3 className="text-sm font-semibold text-slate-900">By Category</h3>
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-white">By Category</h3>
             <p className="text-xs text-slate-400 mt-0.5">{data.total_accepted} invoices accepted</p>
           </div>
         </div>
@@ -92,7 +92,7 @@ export default function SpendInsights() {
                 <div className="flex items-center justify-between mb-1">
                   <div className="flex items-center gap-2">
                     <span className={`w-2 h-2 rounded-full ${catColors[i % catColors.length]}`} />
-                    <span className="text-xs font-medium text-slate-700">{cat.category}</span>
+                    <span className="text-xs font-medium text-slate-700 dark:text-slate-200">{cat.category}</span>
                   </div>
                   <span className="text-xs text-slate-500 font-medium">₹{cat.amount.toLocaleString("en-IN")}</span>
                 </div>

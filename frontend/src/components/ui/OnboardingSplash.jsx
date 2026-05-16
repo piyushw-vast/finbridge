@@ -83,7 +83,7 @@ export default function OnboardingSplash({ onDone }) {
                   ${isCurrent ? "bg-indigo-600 ring-4 ring-indigo-600/30" : isVisible ? "bg-emerald-500" : "bg-slate-800"}`}
                 >
                   {isCurrent ? (
-                    <div className="w-2.5 h-2.5 bg-white rounded-full animate-pulse" />
+                    <div className="w-2.5 h-2.5 bg-white dark:bg-slate-800 rounded-full animate-pulse" />
                   ) : isVisible ? (
                     <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -96,7 +96,7 @@ export default function OnboardingSplash({ onDone }) {
                   <p className={`text-sm font-semibold transition-colors ${isVisible ? "text-white" : "text-slate-600"}`}>
                     {step.label}
                   </p>
-                  <p className={`text-xs transition-colors ${isCurrent ? "text-indigo-400" : isVisible ? "text-slate-400" : "text-slate-700"}`}>
+                  <p className={`text-xs transition-colors ${isCurrent ? "text-indigo-400" : isVisible ? "text-slate-400" : "text-slate-700 dark:text-slate-200"}`}>
                     {step.sub}
                   </p>
                 </div>

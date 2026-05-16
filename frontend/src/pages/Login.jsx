@@ -40,7 +40,7 @@ export default function Login() {
       <div className="hidden lg:flex lg:w-5/12 bg-gradient-to-br from-indigo-900 via-indigo-800 to-violet-900 flex-col justify-between p-10">
         <div>
           <div className="flex items-center gap-3 mb-16">
-            <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center border border-white/20">
+            <div className="w-10 h-10 bg-white dark:bg-slate-800/10 rounded-xl flex items-center justify-center border border-white/20">
               <span className="text-white font-bold text-sm">FB</span>
             </div>
             <span className="text-white font-bold text-lg">FinBridge</span>
@@ -72,16 +72,16 @@ export default function Login() {
       </div>
 
       {/* Right form panel */}
-      <div className="flex-1 flex items-center justify-center bg-white px-6 py-12">
+      <div className="flex-1 flex items-center justify-center bg-white dark:bg-slate-800 px-6 py-12">
         <div className="w-full max-w-sm">
           <div className="flex items-center gap-2 mb-10 lg:hidden">
             <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-xs">FB</span>
             </div>
-            <span className="font-bold text-slate-900">FinBridge</span>
+            <span className="font-bold text-slate-900 dark:text-white">FinBridge</span>
           </div>
 
-          <h2 className="text-2xl font-bold text-slate-900 mb-1">Welcome back</h2>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-1">Welcome back</h2>
           <p className="text-slate-500 text-sm mb-8">Sign in to your account to continue</p>
 
           {error && (
@@ -95,24 +95,24 @@ export default function Login() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">Email address</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1.5">Email address</label>
               <input
                 type="email"
                 required
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 text-sm text-slate-900 placeholder-slate-400 transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 text-sm text-slate-900 dark:text-white placeholder-slate-400 transition-all"
                 placeholder="you@company.com"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">Password</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1.5">Password</label>
               <input
                 type="password"
                 required
                 value={form.password}
                 onChange={(e) => setForm({ ...form, password: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 text-sm text-slate-900 placeholder-slate-400 transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 text-sm text-slate-900 dark:text-white placeholder-slate-400 transition-all"
                 placeholder="••••••••"
               />
             </div>
@@ -133,13 +133,6 @@ export default function Login() {
             </button>
           </form>
 
-          <div className="mt-8 p-4 rounded-xl bg-slate-50 border border-slate-100">
-            <p className="text-xs font-semibold text-slate-500 mb-2">Demo credentials</p>
-            <div className="space-y-1.5 text-xs text-slate-400">
-              <p><span className="text-slate-600 font-medium">Company Admin:</span> companyadmin@acme.com / companypass123</p>
-              <p><span className="text-slate-600 font-medium">Accountant:</span> accountant@finbridge.com / firm123</p>
-            </div>
-          </div>
         </div>
       </div>
     </div>

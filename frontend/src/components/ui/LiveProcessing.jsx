@@ -27,7 +27,7 @@ export default function LiveProcessing({ processingStatus }) {
   const currentStage = STAGES[currentIdx];
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
       {/* Top gradient accent */}
       <div className={`h-1 transition-all duration-700 ${failed ? "bg-rose-400" : complete ? "bg-emerald-500" : "bg-gradient-to-r from-indigo-500 via-violet-500 to-indigo-600"}`}
         style={{ width: "100%" }}
@@ -37,7 +37,7 @@ export default function LiveProcessing({ processingStatus }) {
         {/* Progress header */}
         <div className="mb-5">
           <div className="flex items-center justify-between mb-2.5">
-            <span className="text-sm font-semibold text-slate-800 flex items-center gap-2">
+            <span className="text-sm font-semibold text-slate-800 dark:text-slate-100 flex items-center gap-2">
               {!complete && !failed && (
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75" />
@@ -88,7 +88,7 @@ export default function LiveProcessing({ processingStatus }) {
                       </svg>
                     )}
                     {isCurrent && (
-                      <div className="w-2.5 h-2.5 bg-white rounded-full animate-pulse" />
+                      <div className="w-2.5 h-2.5 bg-white dark:bg-slate-800 rounded-full animate-pulse" />
                     )}
                     {isPending && (
                       <div className="w-2 h-2 bg-slate-300 rounded-full" />

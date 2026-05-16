@@ -103,10 +103,10 @@ export default function RiskRadar({ invoice, tx }) {
     : { text: "High Risk", color: "text-rose-600", bg: "bg-rose-50" };
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
+    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 shadow-sm p-6">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h2 className="text-base font-semibold text-slate-900">Risk Radar</h2>
+          <h2 className="text-base font-semibold text-slate-900 dark:text-white">Risk Radar</h2>
           <p className="text-xs text-slate-400 mt-0.5">Multi-dimensional risk profile</p>
         </div>
         <div className={`px-3 py-1.5 rounded-xl ${label.bg}`}>
@@ -118,17 +118,17 @@ export default function RiskRadar({ invoice, tx }) {
         <RadarChart axes={axes} />
       </div>
 
-      <div className="grid grid-cols-2 gap-2">
+      <div className="space-y-2.5">
         {axes.map(ax => (
-          <div key={ax.label} className="flex items-center gap-2">
-            <div className="w-16 h-1.5 bg-slate-100 rounded-full overflow-hidden flex-shrink-0">
+          <div key={ax.label} className="flex items-center gap-3">
+            <span className="text-[11px] text-slate-500 w-36 flex-shrink-0">{ax.label.replace("\n", " ")}</span>
+            <div className="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
               <div
                 className="h-full rounded-full transition-all"
                 style={{ width: `${ax.value}%`, backgroundColor: ax.color }}
               />
             </div>
-            <span className="text-[10px] text-slate-500 leading-tight">{ax.label.replace("\n", " ")}</span>
-            <span className="text-[10px] font-semibold text-slate-700 ml-auto">{ax.value}</span>
+            <span className="text-[11px] font-semibold text-slate-700 dark:text-slate-200 w-7 text-right flex-shrink-0">{ax.value}</span>
           </div>
         ))}
       </div>

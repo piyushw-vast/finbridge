@@ -83,7 +83,7 @@ export default function ExtractionDisagreement({ invoice, tx }) {
   if (rows.length === 0) return null;
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm p-6">
+    <div className="bg-white dark:bg-slate-800 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm p-6">
       <div className="flex items-center gap-2.5 mb-4">
         <div className="w-7 h-7 bg-amber-50 dark:bg-amber-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
           <svg className="w-3.5 h-3.5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -91,7 +91,7 @@ export default function ExtractionDisagreement({ invoice, tx }) {
           </svg>
         </div>
         <div>
-          <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Extraction Disagreements</h2>
+          <h2 className="text-sm font-semibold text-slate-900 dark:text-white dark:text-white">Extraction Disagreements</h2>
           <p className="text-xs text-slate-400 dark:text-slate-500">Fields where engines returned conflicting reads</p>
         </div>
       </div>
@@ -132,7 +132,7 @@ export default function ExtractionDisagreement({ invoice, tx }) {
                     <p
                       className={`text-xs font-mono font-semibold truncate ${
                         engine.confident
-                          ? "text-slate-800 dark:text-slate-100"
+                          ? "text-slate-800 dark:text-slate-100 dark:text-slate-100"
                           : "text-rose-700 dark:text-rose-400"
                       }`}
                     >

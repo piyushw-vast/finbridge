@@ -44,3 +44,4 @@ backend/alembic/versions/__pycache__/
 FinBridge_Architecture.png
 FinBridge_Architecture.pdf
 architecture_diagram.py
+.claude/

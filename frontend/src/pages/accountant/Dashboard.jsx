@@ -79,7 +79,7 @@ export default function AccountantDashboard() {
     { label: "Needs Review", value: stats ? (stats.under_review ?? 0) + (stats.needs_correction ?? 0) : 0, numColor: "text-indigo-600", bg: "bg-indigo-50" },
     { label: "High Risk", value: stats?.high_risk ?? 0, numColor: "text-rose-600", bg: "bg-rose-50" },
     { label: "Accepted", value: stats?.accepted ?? 0, numColor: "text-emerald-600", bg: "bg-emerald-50" },
-    { label: "Avg Trust Score", value: stats ? `${stats.avg_trust_score ?? 0}/100` : "—", numColor: "text-slate-900", bg: "bg-slate-100" },
+    { label: "Avg Trust Score", value: stats ? `${stats.avg_trust_score ?? 0}/100` : "—", numColor: "text-slate-900 dark:text-white", bg: "bg-slate-100" },
     { label: "Time Saved", value: stats ? formatTimeSaved(stats.accepted) : "—", numColor: "text-violet-600", bg: "bg-violet-50" },
   ];
 
@@ -87,7 +87,7 @@ export default function AccountantDashboard() {
     <Layout>
       <div className="px-8 py-8 max-w-6xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Review Queue</h1>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white dark:text-white">Review Queue</h1>
           <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">Sorted by risk level — high risk invoices appear first</p>
         </div>
 
@@ -96,7 +96,7 @@ export default function AccountantDashboard() {
           <>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-2">
               {STAT_CONFIG.map(s => (
-                <div key={s.label} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm p-5 text-center">
+                <div key={s.label} className="bg-white dark:bg-slate-800 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm p-5 text-center">
                   <p className={`text-2xl font-bold ${s.numColor}`}>{s.value}</p>
                   <p className="text-xs text-slate-400 dark:text-slate-500 mt-1 font-medium">{s.label}</p>
                 </div>
@@ -138,7 +138,7 @@ export default function AccountantDashboard() {
               key={tab.key}
               onClick={() => setFilter(tab.key)}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all
-                ${filter === tab.key ? "bg-white dark:bg-slate-700 shadow-sm text-slate-800 dark:text-white" : "text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"}`}
+                ${filter === tab.key ? "bg-white dark:bg-slate-800 dark:bg-slate-700 shadow-sm text-slate-800 dark:text-slate-100 dark:text-white" : "text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"}`}
             >
               {tab.label}
             </button>
@@ -173,11 +173,11 @@ export default function AccountantDashboard() {
             {[1,2,3].map(i => <div key={i} className="shimmer h-20 rounded-2xl" />)}
           </div>
         ) : invoices.length === 0 ? (
-          <div className="text-center py-16 bg-white dark:bg-slate-800 rounded-2xl border border-dashed border-slate-200 dark:border-slate-700">
+          <div className="text-center py-16 bg-white dark:bg-slate-800 dark:bg-slate-800 rounded-2xl border border-dashed border-slate-200 dark:border-slate-700">
             <svg className="w-12 h-12 mx-auto text-slate-200 dark:text-slate-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <p className="text-slate-700 dark:text-slate-300 font-semibold">All caught up!</p>
+            <p className="text-slate-700 dark:text-slate-200 dark:text-slate-300 font-semibold">All caught up!</p>
             <p className="text-slate-400 dark:text-slate-500 text-sm mt-1">No invoices in this queue</p>
           </div>
         ) : (
@@ -190,7 +190,7 @@ export default function AccountantDashboard() {
                 return (
                   <div
                     key={inv.id}
-                    className={`bg-white dark:bg-slate-800 rounded-2xl border p-5 hover:shadow-sm transition-all cursor-pointer group
+                    className={`bg-white dark:bg-slate-800 dark:bg-slate-800 rounded-2xl border p-5 hover:shadow-sm transition-all cursor-pointer group
                       ${inv.risk_level === "high_risk" ? "border-rose-200 dark:border-rose-900 hover:border-rose-300" :
                         inv.risk_level === "review" ? "border-amber-200 dark:border-amber-900 hover:border-amber-300" : "border-slate-100 dark:border-slate-700 hover:border-indigo-200"}`}
                     onClick={() => navigate(`/accountant/review/${inv.id}`)}
@@ -219,7 +219,7 @@ export default function AccountantDashboard() {
                           inv.risk_level === "review" ? "bg-amber-400" : "bg-emerald-500"
                         }`} />
                         <div className="min-w-0">
-                          <p className="font-semibold text-slate-800 truncate">{inv.file_name}</p>
+                          <p className="font-semibold text-slate-800 dark:text-slate-100 truncate">{inv.file_name}</p>
                           <div className="flex items-center gap-2 mt-0.5">
                             <p className="text-xs text-slate-400 capitalize">{inv.invoice_type?.replace("_", " ")}</p>
                             {inv.vendor_name && vendorCount > 1 && (

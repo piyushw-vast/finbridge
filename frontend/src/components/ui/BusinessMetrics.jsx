@@ -49,7 +49,7 @@ function MetricCard({ icon, value, suffix, label, sub, color, delay }) {
       <p className={`text-3xl font-bold tabular-nums ${c.num}`}>
         {count}{suffix}
       </p>
-      <p className="text-sm font-semibold text-slate-700 dark:text-slate-200 mt-1">{label}</p>
+      <p className="text-sm font-semibold text-slate-700 dark:text-slate-200 dark:text-slate-200 mt-1">{label}</p>
       <p className="text-xs text-slate-400 dark:text-slate-500 mt-0.5 leading-relaxed">{sub}</p>
     </div>
   );
@@ -118,7 +118,7 @@ export default function BusinessMetrics({ stats }) {
   return (
     <div className="mb-8">
       <div className="flex items-center gap-2 mb-4">
-        <h2 className="text-sm font-semibold text-slate-700 dark:text-slate-300">Autonomous Operations</h2>
+        <h2 className="text-sm font-semibold text-slate-700 dark:text-slate-200 dark:text-slate-300">Autonomous Operations</h2>
         <span className="text-[10px] bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-800 px-2 py-0.5 rounded-full font-semibold">
           Live
         </span>

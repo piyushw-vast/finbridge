@@ -42,7 +42,7 @@ export default function PWAInstallPrompt() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-[300] p-4 animate-in slide-in-from-bottom">
-      <div className="bg-white rounded-2xl shadow-2xl border border-slate-100 p-5 max-w-sm mx-auto">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-100 p-5 max-w-sm mx-auto">
         <div className="flex items-start gap-3">
           <div className="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center flex-shrink-0">
             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
@@ -50,7 +50,7 @@ export default function PWAInstallPrompt() {
             </svg>
           </div>
           <div className="flex-1 min-w-0">
-            <p className="font-bold text-slate-900 text-sm">Install FinBridge</p>
+            <p className="font-bold text-slate-900 dark:text-white text-sm">Install FinBridge</p>
             <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
               Add to your home screen — upload invoices on the go, even offline.
             </p>
@@ -70,7 +70,7 @@ export default function PWAInstallPrompt() {
           </button>
           <button
             onClick={handleDismiss}
-            className="px-4 py-2.5 text-slate-500 hover:text-slate-700 text-sm font-medium rounded-xl hover:bg-slate-50 transition-all"
+            className="px-4 py-2.5 text-slate-500 hover:text-slate-700 dark:text-slate-200 text-sm font-medium rounded-xl hover:bg-slate-50 transition-all"
           >
             Not now
           </button>

@@ -18,6 +18,8 @@ function getNavItems(role) {
   if (role === "company_admin" || role === "company_user") {
     items.push({ label: "Dashboard", path: "/company/dashboard", icon: "home" });
     items.push({ label: "Upload Invoice", path: "/company/upload", icon: "upload" });
+    items.push({ label: "Payments", path: "/company/payments", icon: "payment" });
+    items.push({ label: "Documents", path: "/company/documents", icon: "document" });
   }
   if (role === "accountant") {
     items.push({ label: "Review Queue", path: "/accountant/dashboard", icon: "review" });
@@ -44,6 +46,8 @@ function Icon({ name, className = "w-5 h-5" }) {
     firm: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
     reports: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
     admin: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z",
+    payment: "M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z",
+    document: "M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z",
     bell: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9",
     logout: "M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1",
   };
@@ -118,7 +122,7 @@ function NotificationsPanel({ onClose, onRead }) {
       style={{ maxHeight: "480px" }}
     >
       <div className="flex items-center justify-between px-4 py-3 border-b border-slate-100">
-        <h3 className="text-sm font-semibold text-slate-900">Notifications</h3>
+        <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Notifications</h3>
         {unread > 0 && (
           <button onClick={markAllRead} className="text-xs text-indigo-600 hover:text-indigo-800 font-medium">
             Mark all read
@@ -155,7 +159,7 @@ function NotificationsPanel({ onClose, onRead }) {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-2">
-                    <p className={`text-xs font-semibold leading-snug ${notif.is_read ? "text-slate-600" : "text-slate-900"}`}>{notif.title}</p>
+                    <p className={`text-xs font-semibold leading-snug ${notif.is_read ? "text-slate-600" : "text-slate-900 dark:text-white"}`}>{notif.title}</p>
                     {!notif.is_read && <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full flex-shrink-0 mt-1" />}
                   </div>
                   <p className="text-xs text-slate-400 mt-0.5 leading-snug line-clamp-2">{notif.message}</p>
@@ -236,6 +240,19 @@ export default function Sidebar() {
       {/* Nav */}
       <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto">
         <p className="text-slate-600 text-xs font-semibold uppercase tracking-widest px-3 mb-3">Menu</p>
+
+        {/* Quick search hint */}
+        <div className="flex items-center gap-2 px-3 py-2 mb-1 rounded-xl border border-slate-700/60 bg-slate-800/40 cursor-default select-none">
+          <svg className="w-3.5 h-3.5 text-slate-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <span className="text-xs text-slate-500 flex-1">Quick search</span>
+          <div className="flex items-center gap-0.5">
+            <kbd className="text-[9px] bg-slate-700 text-slate-400 px-1.5 py-0.5 rounded font-mono border border-slate-600">Ctrl</kbd>
+            <kbd className="text-[9px] bg-slate-700 text-slate-400 px-1.5 py-0.5 rounded font-mono border border-slate-600">K</kbd>
+          </div>
+        </div>
+
         {navItems.map(item => {
           const isActive = location.pathname === item.path;
           return (
@@ -259,20 +276,6 @@ export default function Sidebar() {
           );
         })}
       </nav>
-
-      {/* Cmd+K hint */}
-      <div className="px-4 pb-2">
-        <div className="flex items-center gap-2 bg-slate-800/60 rounded-xl px-3 py-2">
-          <svg className="w-3.5 h-3.5 text-slate-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-          <span className="text-xs text-slate-500 flex-1">Search everything…</span>
-          <div className="flex items-center gap-0.5">
-            <kbd className="text-[9px] bg-slate-700 text-slate-400 px-1 py-0.5 rounded font-mono border border-slate-600">⌘</kbd>
-            <kbd className="text-[9px] bg-slate-700 text-slate-400 px-1 py-0.5 rounded font-mono border border-slate-600">K</kbd>
-          </div>
-        </div>
-      </div>
 
       {/* Bottom */}
       <div className="px-3 py-4 border-t border-slate-800 space-y-1">

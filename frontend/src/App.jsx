@@ -7,6 +7,8 @@ import Login from "./pages/Login";
 
 import CompanyDashboard from "./pages/company/Dashboard";
 import UploadInvoice from "./pages/company/UploadInvoice";
+import UploadPayments from "./pages/company/UploadPayments";
+import UploadDocuments from "./pages/company/UploadDocuments";
 import InvoiceDetail from "./pages/company/InvoiceDetail";
 
 import AccountantDashboard from "./pages/accountant/Dashboard";
@@ -35,6 +37,16 @@ function App() {
           <Route path="/company/upload" element={
             <ProtectedRoute roles={["company_admin", "company_user"]}>
               <UploadInvoice />
+            </ProtectedRoute>
+          } />
+          <Route path="/company/payments" element={
+            <ProtectedRoute roles={["company_admin", "company_user"]}>
+              <UploadPayments />
+            </ProtectedRoute>
+          } />
+          <Route path="/company/documents" element={
+            <ProtectedRoute roles={["company_admin", "company_user"]}>
+              <UploadDocuments />
             </ProtectedRoute>
           } />
           <Route path="/company/invoice/:id" element={
@@ -85,7 +97,7 @@ function App() {
             <div className="min-h-screen flex items-center justify-center bg-gray-50">
               <div className="text-center">
                 <p className="text-4xl mb-3">🚫</p>
-                <h1 className="text-xl font-bold text-gray-900">Access Denied</h1>
+                <h1 className="text-xl font-bold text-gray-900 dark:text-white">Access Denied</h1>
                 <p className="text-gray-500 mt-1">You don't have permission to view this page.</p>
               </div>
             </div>

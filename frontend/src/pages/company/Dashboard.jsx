@@ -10,7 +10,7 @@ import { useAuth } from "../../context/AuthContext";
 import api from "../../lib/api";
 
 const STAT_CONFIG = [
-  { key: "total",        label: "Total",        icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z", bg: "bg-slate-100", color: "text-slate-500", num: "text-slate-900" },
+  { key: "total",        label: "Total",        icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z", bg: "bg-slate-100", color: "text-slate-500", num: "text-slate-900 dark:text-white" },
   { key: "pending",      label: "Pending",      icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z", bg: "bg-slate-100", color: "text-slate-400", num: "text-slate-600" },
   { key: "under_review", label: "Under Review", icon: "M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z", bg: "bg-indigo-50", color: "text-indigo-500", num: "text-indigo-600" },
   { key: "accepted",     label: "Accepted",     icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z", bg: "bg-emerald-50", color: "text-emerald-500", num: "text-emerald-600" },
@@ -139,7 +139,7 @@ export default function CompanyDashboard() {
                   </span>
                 )}
                 {uploadingLogo && (
-                  <div className="absolute inset-0 bg-white/70 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-white dark:bg-slate-800/70 flex items-center justify-center">
                     <svg className="w-4 h-4 animate-spin text-indigo-600" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
@@ -155,7 +155,7 @@ export default function CompanyDashboard() {
               <input ref={logoInputRef} type="file" accept="image/*" className="hidden" onChange={handleLogoUpload} />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-slate-900">{company?.name || "Invoices"}</h1>
+              <h1 className="text-2xl font-bold text-slate-900 dark:text-white">{company?.name || "Invoices"}</h1>
               <p className="text-slate-500 text-sm mt-0.5">Upload and track your financial documents</p>
             </div>
           </div>
@@ -192,7 +192,7 @@ export default function CompanyDashboard() {
         {stats && (
           <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
             {STAT_CONFIG.map(s => (
-              <div key={s.key} className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+              <div key={s.key} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 shadow-sm p-5">
                 <div className={`w-9 h-9 ${s.bg} rounded-xl flex items-center justify-center mb-3`}>
                   <svg className={`w-4.5 h-4.5 ${s.color}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
                     <path strokeLinecap="round" strokeLinejoin="round" d={s.icon} />
@@ -229,7 +229,7 @@ export default function CompanyDashboard() {
               placeholder="Search invoices..."
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="w-full pl-9 pr-4 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 bg-white"
+              className="w-full pl-9 pr-4 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 bg-white dark:bg-slate-800"
             />
             {search && (
               <button onClick={() => setSearch("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-300 hover:text-slate-500">
@@ -242,7 +242,7 @@ export default function CompanyDashboard() {
           <select
             value={statusFilter}
             onChange={e => setStatusFilter(e.target.value)}
-            className="border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-600 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 bg-white"
+            className="border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-600 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 bg-white dark:bg-slate-800"
           >
             <option value="all">All Status</option>
             <option value="pending">Pending</option>
@@ -255,7 +255,7 @@ export default function CompanyDashboard() {
 
         {/* Table */}
         {loading ? (
-          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
             {[1, 2, 3].map(i => (
               <div key={i} className="px-5 py-4 border-b border-slate-50 flex gap-4 items-center">
                 <div className="shimmer h-9 w-9 rounded-xl flex-shrink-0" />
@@ -266,7 +266,7 @@ export default function CompanyDashboard() {
             ))}
           </div>
         ) : invoices.length === 0 ? (
-          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
             {/* Top gradient bar */}
             <div className="h-1.5 bg-gradient-to-r from-indigo-500 via-violet-500 to-indigo-600" />
             <div className="py-16 px-8 text-center max-w-lg mx-auto">
@@ -276,7 +276,7 @@ export default function CompanyDashboard() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Your AI pipeline is ready</h3>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Your AI pipeline is ready</h3>
               <p className="text-slate-500 text-sm leading-relaxed mb-8">
                 Drop your first invoice and watch FinBridge autonomously extract, validate, and trust-score it across three AI engines — in under 20 seconds.
               </p>
@@ -302,7 +302,7 @@ export default function CompanyDashboard() {
             </div>
           </div>
         ) : (
-          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-slate-50 border-b border-slate-100">
@@ -330,7 +330,7 @@ export default function CompanyDashboard() {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                           </svg>
                         </div>
-                        <span className="font-medium text-slate-800 truncate max-w-[180px]">{inv.file_name}</span>
+                        <span className="font-medium text-slate-800 dark:text-slate-100 truncate max-w-[180px]">{inv.file_name}</span>
                       </div>
                     </td>
                     <td className="px-5 py-4">

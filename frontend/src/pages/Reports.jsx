@@ -27,7 +27,7 @@ function DownloadButton({ reportId, fileName }) {
     <button
       onClick={handle}
       disabled={loading}
-      className="text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 text-sm font-medium px-3 py-2 bg-slate-50 dark:bg-slate-700/50 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl transition-all flex items-center gap-1.5 disabled:opacity-50"
+      className="text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-200 dark:hover:text-slate-200 text-sm font-medium px-3 py-2 bg-slate-50 dark:bg-slate-700/50 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl transition-all flex items-center gap-1.5 disabled:opacity-50"
     >
       {loading ? (
         <svg className="w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -100,8 +100,8 @@ function ReportSummaryPanel({ data }) {
               {data.categories.map(c => (
                 <div key={c.name}>
                   <div className="flex items-center justify-between mb-0.5">
-                    <span className="text-xs text-slate-700 dark:text-slate-300 truncate max-w-[60%]">{c.name}</span>
-                    <span className="text-xs font-semibold font-mono text-slate-800 dark:text-slate-200">{fmt(c.amount)}</span>
+                    <span className="text-xs text-slate-700 dark:text-slate-200 dark:text-slate-300 truncate max-w-[60%]">{c.name}</span>
+                    <span className="text-xs font-semibold font-mono text-slate-800 dark:text-slate-100 dark:text-slate-200">{fmt(c.amount)}</span>
                   </div>
                   <div className="h-2 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
                     <div
@@ -126,8 +126,8 @@ function ReportSummaryPanel({ data }) {
                   <span className="text-[10px] font-bold text-slate-300 dark:text-slate-600 w-4 flex-shrink-0">{i + 1}</span>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs text-slate-700 dark:text-slate-300 truncate">{v.name}</span>
-                      <span className="text-xs font-semibold font-mono text-slate-800 dark:text-slate-200 ml-2 flex-shrink-0">{fmt(v.amount)}</span>
+                      <span className="text-xs text-slate-700 dark:text-slate-200 dark:text-slate-300 truncate">{v.name}</span>
+                      <span className="text-xs font-semibold font-mono text-slate-800 dark:text-slate-100 dark:text-slate-200 ml-2 flex-shrink-0">{fmt(v.amount)}</span>
                     </div>
                     <div className="mt-0.5 h-1.5 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
                       <div
@@ -192,7 +192,7 @@ function ReportSummaryPanel({ data }) {
             ].map(cf => (
               <div key={cf.label}>
                 <p className="text-[10px] text-slate-400 dark:text-slate-500">{cf.label}</p>
-                <p className={`text-xs font-semibold font-mono mt-0.5 ${cf.plus ? "text-emerald-600 dark:text-emerald-400" : cf.minus ? "text-rose-600 dark:text-rose-400" : cf.bold ? "text-slate-900 dark:text-white" : "text-slate-700 dark:text-slate-300"}`}>
+                <p className={`text-xs font-semibold font-mono mt-0.5 ${cf.plus ? "text-emerald-600 dark:text-emerald-400" : cf.minus ? "text-rose-600 dark:text-rose-400" : cf.bold ? "text-slate-900 dark:text-white dark:text-white" : "text-slate-700 dark:text-slate-200 dark:text-slate-300"}`}>
                   {cf.plus ? "+" : cf.minus ? "−" : ""}{fmt(cf.val)}
                 </p>
               </div>
@@ -283,7 +283,7 @@ export default function Reports() {
       <div className="px-8 py-8 max-w-5xl mx-auto">
         <div className="flex items-start justify-between mb-8 gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Reports</h1>
+            <h1 className="text-2xl font-bold text-slate-900 dark:text-white dark:text-white">Reports</h1>
             <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">MIS reports and financial summaries</p>
           </div>
           <div className="flex items-center gap-2 flex-shrink-0 flex-wrap justify-end">
@@ -323,11 +323,11 @@ export default function Reports() {
         {loading ? (
           <div className="space-y-3">{[1,2,3].map(i => <div key={i} className="shimmer h-24 rounded-2xl" />)}</div>
         ) : reports.length === 0 ? (
-          <div className="text-center py-20 bg-white dark:bg-slate-800 rounded-2xl border border-dashed border-slate-200 dark:border-slate-700">
+          <div className="text-center py-20 bg-white dark:bg-slate-800 dark:bg-slate-800 rounded-2xl border border-dashed border-slate-200 dark:border-slate-700">
             <svg className="w-14 h-14 mx-auto text-slate-200 dark:text-slate-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
-            <p className="text-slate-700 dark:text-slate-300 font-semibold">No reports yet</p>
+            <p className="text-slate-700 dark:text-slate-200 dark:text-slate-300 font-semibold">No reports yet</p>
             {canUpload && <p className="text-slate-400 text-sm mt-1">Upload your first MIS report</p>}
           </div>
         ) : (
@@ -335,7 +335,7 @@ export default function Reports() {
             {reports.map(r => {
               const isOpen = expanded === r.id;
               return (
-                <div key={r.id} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm overflow-hidden transition-all">
+                <div key={r.id} className="bg-white dark:bg-slate-800 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm overflow-hidden transition-all">
                   {/* Header row */}
                   <div className="p-5 flex items-center justify-between gap-4">
                     <div className="flex items-center gap-4 min-w-0">
@@ -345,7 +345,7 @@ export default function Reports() {
                         </svg>
                       </div>
                       <div className="min-w-0">
-                        <p className="font-semibold text-slate-800 dark:text-white truncate">{r.title}</p>
+                        <p className="font-semibold text-slate-800 dark:text-slate-100 dark:text-white truncate">{r.title}</p>
                         <div className="flex items-center gap-2 mt-1 flex-wrap">
                           <Badge type={r.report_type} />
                           {r.period_start && r.period_end && (
@@ -399,9 +399,9 @@ export default function Reports() {
       {/* Upload modal */}
       {showUpload && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl w-full max-w-md max-h-[90vh] overflow-y-auto shadow-xl">
-            <div className="flex items-center justify-between px-6 pt-6 pb-4 sticky top-0 bg-white dark:bg-slate-800 rounded-t-2xl border-b border-slate-100 dark:border-slate-700">
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white">Upload Report</h2>
+          <div className="bg-white dark:bg-slate-800 dark:bg-slate-800 rounded-2xl w-full max-w-md max-h-[90vh] overflow-y-auto shadow-xl">
+            <div className="flex items-center justify-between px-6 pt-6 pb-4 sticky top-0 bg-white dark:bg-slate-800 dark:bg-slate-800 rounded-t-2xl border-b border-slate-100 dark:border-slate-700">
+              <h2 className="text-lg font-bold text-slate-900 dark:text-white dark:text-white">Upload Report</h2>
               <button onClick={() => setShowUpload(false)} className="w-8 h-8 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center justify-center transition-all text-xl">×</button>
             </div>
             <form onSubmit={handleUpload} className="space-y-3 px-6 py-5">
@@ -409,7 +409,7 @@ export default function Reports() {
                 <div>
                   <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Company</label>
                   <select required value={form.company_id} onChange={e => setForm(p => ({ ...p, company_id: e.target.value }))}
-                    className="w-full border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-800 dark:text-white rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400">
+                    className="w-full border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 dark:bg-slate-700 text-slate-800 dark:text-slate-100 dark:text-white rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400">
                     <option value="">Select company...</option>
                     {companies.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
                   </select>
@@ -425,13 +425,13 @@ export default function Reports() {
                   <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">{f.label}</label>
                   <input type={f.type || "text"} required={f.required} value={form[f.key]}
                     onChange={e => setForm(p => ({ ...p, [f.key]: e.target.value }))}
-                    className="w-full border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-800 dark:text-white rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400" />
+                    className="w-full border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 dark:bg-slate-700 text-slate-800 dark:text-slate-100 dark:text-white rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400" />
                 </div>
               ))}
               <div>
                 <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Report Type</label>
                 <select value={form.report_type} onChange={e => setForm(p => ({ ...p, report_type: e.target.value }))}
-                  className="w-full border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-800 dark:text-white rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400">
+                  className="w-full border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 dark:bg-slate-700 text-slate-800 dark:text-slate-100 dark:text-white rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400">
                   <option value="mis">MIS Report</option>
                   <option value="balance_sheet">Balance Sheet</option>
                   <option value="profit_loss">Profit & Loss</option>

@@ -38,7 +38,7 @@ export default function PaymentAging({ companyId }) {
   if (totalUnpaid === 0) return null;
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm mb-6 overflow-hidden">
+    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 shadow-sm mb-6 overflow-hidden">
       <div className="flex items-center justify-between px-5 py-4 border-b border-slate-50">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 bg-amber-50 rounded-xl flex items-center justify-center">
@@ -47,7 +47,7 @@ export default function PaymentAging({ companyId }) {
             </svg>
           </div>
           <div>
-            <h3 className="font-semibold text-slate-900 text-sm">Payables Aging</h3>
+            <h3 className="font-semibold text-slate-900 dark:text-white text-sm">Payables Aging</h3>
             <p className="text-xs text-slate-400">Unpaid accepted invoices · {formatAmount(totalUnpaid)} total</p>
           </div>
         </div>

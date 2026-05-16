@@ -77,7 +77,7 @@ export default function TrustExplainability({ invoice, tx }) {
   const isMid = score >= 60 && score < 85;
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm p-6">
+    <div className="bg-white dark:bg-slate-800 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm p-6">
       <div className="flex items-center gap-2.5 mb-4">
         <div
           className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 ${
@@ -105,7 +105,7 @@ export default function TrustExplainability({ invoice, tx }) {
           </svg>
         </div>
         <div>
-          <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Trust Explainability</h2>
+          <h2 className="text-sm font-semibold text-slate-900 dark:text-white dark:text-white">Trust Explainability</h2>
           <p className="text-xs text-slate-400 dark:text-slate-500">Why the Trust Layer scored this invoice {score}/100</p>
         </div>
       </div>
@@ -133,7 +133,7 @@ export default function TrustExplainability({ invoice, tx }) {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">{r.text}</p>
+                <p className="text-xs text-slate-700 dark:text-slate-200 dark:text-slate-300 leading-relaxed">{r.text}</p>
               </div>
             ))}
           </div>

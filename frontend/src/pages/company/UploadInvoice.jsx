@@ -148,7 +148,7 @@ function SingleUpload({ invoiceType, setInvoiceType }) {
         onDragLeave={() => setDragOver(false)}
         onClick={() => document.getElementById("file-input-single").click()}
         className={`relative border-2 border-dashed rounded-2xl cursor-pointer transition-all duration-200 min-h-56 flex items-center justify-center
-          ${dragOver ? "border-indigo-400 bg-indigo-50" : file ? "border-emerald-300 bg-emerald-50" : "border-slate-200 bg-white hover:border-indigo-300 hover:bg-indigo-50/30"}`}
+          ${dragOver ? "border-indigo-400 bg-indigo-50" : file ? "border-emerald-300 bg-emerald-50" : "border-slate-200 bg-white dark:bg-slate-800 hover:border-indigo-300 hover:bg-indigo-50/30"}`}
       >
         <input id="file-input-single" type="file" className="hidden" accept="image/*,application/pdf"
           onChange={e => handleFile(e.target.files[0])} />
@@ -166,7 +166,7 @@ function SingleUpload({ invoiceType, setInvoiceType }) {
                 </svg>
               </div>
             )}
-            <p className="font-semibold text-slate-800">{file.name}</p>
+            <p className="font-semibold text-slate-800 dark:text-slate-100">{file.name}</p>
             <p className="text-sm text-slate-400 mt-1">{(file.size / 1024).toFixed(0)} KB</p>
             <button onClick={e => { e.stopPropagation(); setFile(null); setPreview(null); }}
               className="mt-3 text-xs text-slate-400 hover:text-rose-500 underline transition-colors">
@@ -180,7 +180,7 @@ function SingleUpload({ invoiceType, setInvoiceType }) {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
               </svg>
             </div>
-            <p className="font-semibold text-slate-700">
+            <p className="font-semibold text-slate-700 dark:text-slate-200">
               {invoiceType === "payment" ? "Drop your payment receipt here" : "Drop your invoice here"}
             </p>
             <p className="text-sm text-slate-400 mt-1">or click to browse</p>
@@ -202,9 +202,9 @@ function SingleUpload({ invoiceType, setInvoiceType }) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-700 mb-1.5">Document Type</label>
+        <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1.5">Document Type</label>
         <select value={invoiceType} onChange={e => setInvoiceType(e.target.value)}
-          className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 bg-white">
+          className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 bg-white dark:bg-slate-800">
           {DOC_TYPES.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
         </select>
         {invoiceType === "payment" && (
@@ -277,7 +277,7 @@ function FileStatusCard({ item }) {
     <div className={`flex items-center gap-3 px-4 py-3 rounded-xl border ${cfg.bg} border-transparent`}>
       <div className={`w-2 h-2 rounded-full flex-shrink-0 ${cfg.dot} ${item.status === "processing" || item.status === "uploading" ? "animate-pulse" : ""}`} />
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-medium text-slate-800 truncate">{item.file.name}</p>
+        <p className="text-sm font-medium text-slate-800 dark:text-slate-100 truncate">{item.file.name}</p>
         <p className="text-xs text-slate-400">{(item.file.size / 1024).toFixed(0)} KB</p>
       </div>
       <span className={`text-xs font-semibold ${cfg.color}`}>{item.error || cfg.label}</span>
@@ -374,9 +374,9 @@ function BulkUpload({ invoiceType, setInvoiceType }) {
     return (
       <div className="space-y-5">
         {/* Progress header */}
-        <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 shadow-sm p-5">
           <div className="flex items-center justify-between mb-3">
-            <p className="text-sm font-semibold text-slate-800">
+            <p className="text-sm font-semibold text-slate-800 dark:text-slate-100">
               {done ? "Bulk upload complete" : "Processing files…"}
             </p>
             <span className="text-sm text-slate-500">{completed}/{total} done</span>
@@ -426,7 +426,7 @@ function BulkUpload({ invoiceType, setInvoiceType }) {
         onDragLeave={() => setDragOver(false)}
         onClick={() => document.getElementById("file-input-bulk").click()}
         className={`relative border-2 border-dashed rounded-2xl cursor-pointer transition-all duration-200 min-h-40 flex items-center justify-center
-          ${dragOver ? "border-indigo-400 bg-indigo-50" : files.length ? "border-indigo-200 bg-indigo-50/30" : "border-slate-200 bg-white hover:border-indigo-300 hover:bg-indigo-50/30"}`}
+          ${dragOver ? "border-indigo-400 bg-indigo-50" : files.length ? "border-indigo-200 bg-indigo-50/30" : "border-slate-200 bg-white dark:bg-slate-800 hover:border-indigo-300 hover:bg-indigo-50/30"}`}
       >
         <input id="file-input-bulk" type="file" className="hidden" accept="image/*,application/pdf" multiple
           onChange={e => addFiles(e.target.files)} />
@@ -436,7 +436,7 @@ function BulkUpload({ invoiceType, setInvoiceType }) {
               <path strokeLinecap="round" strokeLinejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
             </svg>
           </div>
-          <p className="font-semibold text-slate-700 text-sm">Drop multiple invoices here</p>
+          <p className="font-semibold text-slate-700 dark:text-slate-200 text-sm">Drop multiple invoices here</p>
           <p className="text-xs text-slate-400 mt-1">or click to browse — up to 20 files</p>
           <p className="text-xs text-slate-300 mt-1">PDF, JPG, PNG up to 20MB each</p>
         </div>
@@ -445,7 +445,7 @@ function BulkUpload({ invoiceType, setInvoiceType }) {
       {files.length > 0 && (
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <p className="text-sm font-medium text-slate-700">{files.length} file{files.length > 1 ? "s" : ""} selected</p>
+            <p className="text-sm font-medium text-slate-700 dark:text-slate-200">{files.length} file{files.length > 1 ? "s" : ""} selected</p>
             <button onClick={() => setFiles([])} className="text-xs text-slate-400 hover:text-rose-500 transition-colors">Clear all</button>
           </div>
           {files.map((f, idx) => (
@@ -453,7 +453,7 @@ function BulkUpload({ invoiceType, setInvoiceType }) {
               <svg className="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
               </svg>
-              <span className="flex-1 text-sm text-slate-700 truncate">{f.name}</span>
+              <span className="flex-1 text-sm text-slate-700 dark:text-slate-200 truncate">{f.name}</span>
               <span className="text-xs text-slate-400">{(f.size / 1024).toFixed(0)} KB</span>
               <button onClick={() => removeFile(idx)} className="text-slate-300 hover:text-rose-500 transition-colors ml-1">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -466,9 +466,9 @@ function BulkUpload({ invoiceType, setInvoiceType }) {
       )}
 
       <div>
-        <label className="block text-sm font-medium text-slate-700 mb-1.5">Document Type (applies to all)</label>
+        <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1.5">Document Type (applies to all)</label>
         <select value={invoiceType} onChange={e => setInvoiceType(e.target.value)}
-          className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 bg-white">
+          className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 dark:text-slate-100 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 bg-white dark:bg-slate-800">
           {DOC_TYPES.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
         </select>
       </div>
@@ -507,7 +507,7 @@ export default function UploadInvoice() {
 
         <div className="flex items-start justify-between mb-6">
           <div>
-            <h1 className="text-2xl font-bold text-slate-900 mb-1">Upload Invoice</h1>
+            <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-1">Upload Invoice</h1>
             <p className="text-slate-500 text-sm">AI extracts all fields automatically across multiple engines.</p>
           </div>
           {/* Mode toggle */}
@@ -516,7 +516,7 @@ export default function UploadInvoice() {
               <button
                 key={val}
                 onClick={() => setMode(val)}
-                className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${mode === val ? "bg-white text-slate-800 shadow-sm" : "text-slate-500 hover:text-slate-700"}`}
+                className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${mode === val ? "bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-sm" : "text-slate-500 hover:text-slate-700 dark:text-slate-200"}`}
               >
                 {label}
               </button>
@@ -530,26 +530,6 @@ export default function UploadInvoice() {
         }
 
         {/* AI info */}
-        <div className="bg-indigo-50 rounded-xl p-4 border border-indigo-100 mt-5">
-          <p className="text-xs font-semibold text-indigo-700 mb-2.5 flex items-center gap-1.5">
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            How AI extraction works
-          </p>
-          <div className="space-y-1.5">
-            {[
-              ["Groq Vision AI", "Reads and understands document images"],
-              ["PyMuPDF", "Extracts text directly from text-based PDFs"],
-              ["OCR Fallback", "Handles scanned documents and handwriting"],
-            ].map(([title, desc]) => (
-              <div key={title} className="flex items-start gap-2">
-                <div className="w-1.5 h-1.5 bg-indigo-400 rounded-full mt-1.5 flex-shrink-0" />
-                <p className="text-xs text-indigo-600"><span className="font-medium">{title}</span> — {desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </Layout>
   );

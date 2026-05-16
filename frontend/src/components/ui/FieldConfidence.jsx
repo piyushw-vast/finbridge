@@ -25,7 +25,7 @@ export default function FieldConfidence({ label, value, confidence, flagged, con
           <span>{icon}</span> {pct}%
         </span>
       </div>
-      <p className={`text-xs font-medium truncate ${value ? "text-slate-700" : "text-slate-300 italic"}`}>
+      <p className={`text-xs font-medium truncate ${value ? "text-slate-700 dark:text-slate-200" : "text-slate-300 italic"}`}>
         {value ?? "Not extracted"}
       </p>
       {conflict && (

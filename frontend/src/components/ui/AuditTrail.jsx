@@ -33,8 +33,8 @@ export default function AuditTrail({ invoiceId }) {
   if (!logs.length) return null;
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
-      <h2 className="text-base font-semibold text-slate-900 mb-5">Audit Trail</h2>
+    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 shadow-sm p-6">
+      <h2 className="text-base font-semibold text-slate-900 dark:text-white mb-5">Audit Trail</h2>
       <div className="space-y-0">
         {logs.map((log, idx) => {
           const cfg = ACTION_CONFIG[log.action] || { label: log.action, color: "bg-slate-400", icon: "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" };
@@ -51,7 +51,7 @@ export default function AuditTrail({ invoiceId }) {
               </div>
               <div className={`flex-1 ${isLast ? "pb-0" : "pb-2"} pt-1`}>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-semibold text-slate-800">{cfg.label}</span>
+                  <span className="text-sm font-semibold text-slate-800 dark:text-slate-100">{cfg.label}</span>
                   <span className="text-xs text-slate-400">{timeAgo(log.created_at)}</span>
                 </div>
                 <p className="text-xs text-slate-400 mt-0.5">
