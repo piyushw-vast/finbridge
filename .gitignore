@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+venv/
+.venv/
+env/
+*.env
+.env
+.env.*
+
+# Node
+node_modules/
+dist/
+.parcel-cache/
+.vite/
+
+# DB
+*.db
+*.sqlite3
+
+# Uploads
+uploads/
+demo-files/
+sample_invoices/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Alembic
+backend/alembic/versions/__pycache__/
+
+# Generated
+FinBridge_Architecture.png
+FinBridge_Architecture.pdf
+architecture_diagram.py
